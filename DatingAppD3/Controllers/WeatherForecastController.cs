@@ -11,6 +11,7 @@ namespace DatingappD3.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+   
     public class WeatherForecastController : ControllerBase
     {
         //equivalente a ValuesController
