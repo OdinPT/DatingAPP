@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DatingappD3.API.Controllers
 {
@@ -16,8 +17,7 @@ namespace DatingappD3.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
-        
-       
+               
         public AuthController(IAuthRepository repo)
         {
             _repo = repo;

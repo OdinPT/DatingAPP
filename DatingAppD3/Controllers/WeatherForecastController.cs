@@ -9,9 +9,10 @@ using Microsoft.Extensions.Logging;
 
 namespace DatingappD3.API.Controllers
 {
-    [ApiController]
+    
     [Route("[controller]")]
-   
+    //[Route("api/[controller]")]
+    [ApiController]
     public class WeatherForecastController : ControllerBase
     {
         //equivalente a ValuesController
