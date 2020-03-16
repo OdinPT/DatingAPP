@@ -15,7 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace DatingappD3.API.Controllers
 {
-   
+    
     [Route("api/[controller]")]
     [ApiController]
 
@@ -34,9 +34,6 @@ namespace DatingappD3.API.Controllers
         
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {       
-            //if (!ModelState.IsValid)
-             //  return BadRequest(ModelState);
-
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
                 
             if (await _repo.UserExists(userForRegisterDto.Username))
