@@ -10,7 +10,7 @@ namespace DatingappD3.API.Data
     {
         Task<User> Register(User user, string password);
 
-        Task<User> login(string username, string password);
+        Task<User> Login(string username, string password);
 
         Task<bool> UserExists(string username);
     }
