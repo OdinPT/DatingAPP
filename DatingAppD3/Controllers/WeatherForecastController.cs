@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DatingappD3.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("[controller]")]
     [ApiController]
     public class WeatherForecastController : ControllerBase
