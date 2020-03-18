@@ -5,7 +5,6 @@ import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ValueComponent } from './value/value.component';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import { AuthService } from 'src/_services/auth.service';
 import { HomeComponent } from './home/home.component';
@@ -15,7 +14,6 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
    declarations: [
       AppComponent,
-      ValueComponent,
       AppNavComponent,
       HomeComponent,
       RegisterComponent

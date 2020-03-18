@@ -24,7 +24,8 @@ namespace DatingappD3.API.Controllers
             _logger = logger;
             _context = context;
         }
-        
+
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
