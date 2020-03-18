@@ -8,19 +8,23 @@ import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import { AuthService } from 'src/_services/auth.service';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
    declarations: [
       AppComponent,
       ValueComponent,
-      AppNavComponent
+      AppNavComponent,
+      HomeComponent,
+      RegisterComponent
    ],
    imports: [
 	 BrowserModule,
 	 AppRoutingModule,
-    HttpClientModule ,
-    FormsModule
+	 HttpClientModule,
+	 FormsModule
 	],
    providers: [
       AuthService
