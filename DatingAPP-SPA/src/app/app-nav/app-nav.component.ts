@@ -21,12 +21,10 @@ export class AppNavComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
-
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logout() {
