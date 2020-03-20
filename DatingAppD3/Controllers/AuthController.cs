@@ -52,45 +52,30 @@ namespace DatingappD3.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login (UserForLoginDto UserForLoginDto)
          {
-            try
+             
+            var userFromRepo = await _repo.Login(UserForLoginDto.Username.ToLower(), UserForLoginDto.Password);
+
+            if (userFromRepo == null)
+                return Unauthorized();
+            var claims = new[]
             {
-               throw new Exception("computer says no kkkkk!");
-                
-                var userFromRepo = await _repo.Login(UserForLoginDto.Username.ToLower(), UserForLoginDto.Password);
-
-                if (userFromRepo == null)
-                    return Unauthorized();
-
-                var claims = new[]
-                {
-                new Claim (ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim (ClaimTypes.Name, userFromRepo.Username),
-                };
-
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
-
-                var TokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(claims),
-                    Expires = DateTime.Now.AddDays(1),
-                    SigningCredentials = creds
-                };
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-
-                var token = tokenHandler.CreateToken(TokenDescriptor);
-
-                return Ok(new
-                {
-                    token = tokenHandler.WriteToken(token)
-                });
-
-            } catch {
-                return StatusCode(500, "computer realy says no!");
-            }
-       
-           
+              new Claim (ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
+              new Claim (ClaimTypes.Name, userFromRepo.Username),
+            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
+            var TokenDescriptor = new SecurityTokenDescriptor
+             {
+                 Subject = new ClaimsIdentity(claims),
+                 Expires = DateTime.Now.AddDays(1),
+                 SigningCredentials = creds
+             };
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(TokenDescriptor);
+            return Ok(new
+            {
+                token = tokenHandler.WriteToken(token)
+            });
         }
 
     }
