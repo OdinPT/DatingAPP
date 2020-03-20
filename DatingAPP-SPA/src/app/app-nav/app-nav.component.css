@@ -51,19 +51,7 @@
   
   article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: block;
-  }
-  
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-    background-color: #fff;
-  }
-  
+  }  
   [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
   }
@@ -10557,4 +10545,10 @@
  [hidden] {
    display: none !important;
  }
+ .dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+ }
+ .bg-dark.navbar-dark .navbar-nav .nav-link:focus, .bg-dark.navbar-dark .navbar-nav .nav-link:hover, .bg-dark.navbar-dark .navbar-nav .active>.nav-link {
+  color: #88ea1d !important;
+}
  /*# sourceMappingURL=bootstrap-reboot.css.map */
