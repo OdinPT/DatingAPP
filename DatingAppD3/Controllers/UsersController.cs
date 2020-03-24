@@ -1,4 +1,6 @@
-﻿using DatingappD3.API.Data;
+﻿using AutoMapper;
+using DatingappD3.API.Data;
+using DatingappD3.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,9 +15,11 @@ namespace DatingappD3.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly IMapper _mapper;
         private readonly IDatingRepository _repo;
-        public UsersController(IDatingRepository repo)
+        public UsersController(IDatingRepository repo, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
@@ -23,15 +27,18 @@ namespace DatingappD3.API.Controllers
         public async Task<IActionResult> GetUsers()
         {
             var users = await _repo.GetUsers();
-            return Ok(users);
+            var userToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            return Ok(userToReturn);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(user);
 
-            return Ok(user);
+            return Ok(userToReturn);
         }
 
     }
