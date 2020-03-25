@@ -14,12 +14,13 @@ import { AlertifyService } from 'src/_services/alertify.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { MemberListComponent } from './member-list/member-list.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from 'src/routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from 'src/_services/user.service';
+import { MemberCardComponent } from './members/member-list/member-card/member-card.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { UserService } from 'src/_services/user.service';
       MemberListComponent,
       ListsComponent,
       MessagesComponent,
+      MemberCardComponent
    ],
    imports: [
 	 BrowserModule,
