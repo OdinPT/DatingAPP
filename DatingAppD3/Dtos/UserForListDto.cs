@@ -17,7 +17,7 @@ namespace DatingappD3.API.Dtos
 
         public int Age { get; set; }
 
-        public string KnownAs { get; set; }
+        public string knownAs { get; set; }
 
         public DateTime Created { get; set; }
 
