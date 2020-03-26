@@ -13,7 +13,6 @@ import { ErrorInterceptorProvider } from 'src/_services/error.interceptor';
 import { AlertifyService } from 'src/_services/alertify.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -22,6 +21,12 @@ import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from 'src/_services/user.service';
 import { MemberCardComponent } from './members/member-list/member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { BsDropdownModule} from 'ngx-bootstrap';
+import { Component, ViewChild } from '@angular/core';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberDetailComponent } from './members/member-list/member-detail/member-detail.component';
+import { MemberListResolver } from './_resolvers/member-list';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -34,9 +39,10 @@ export function tokenGetter() {
       HomeComponent,
       RegisterComponent,
       MemberListComponent,
+      MemberDetailComponent,
       ListsComponent,
       MessagesComponent,
-      MemberCardComponent
+      MemberCardComponent,
    ],
    imports: [
 	 BrowserModule,
@@ -45,8 +51,10 @@ export function tokenGetter() {
 	 FormsModule,
 	 BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -60,7 +68,9 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      UserService
+      UserService,
+      MemberDetailResolver,
+      MemberListResolver
    ],
    bootstrap: [
       AppComponent
