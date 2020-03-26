@@ -28,6 +28,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberDetailComponent } from './members/member-list/member-detail/member-detail.component';
 import { MemberListResolver } from './_resolvers/member-list';
+import { MemberEditComponent } from './members/member-list/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -44,6 +46,7 @@ export function tokenGetter() {
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
+      MemberEditComponent,
    ],
    imports: [
 	 BrowserModule,
@@ -71,7 +74,9 @@ export function tokenGetter() {
       AuthGuard,
       UserService,
       MemberDetailResolver,
-      MemberListResolver
+      MemberListResolver,
+      MemberEditComponent,
+      MemberEditResolver
    ],
    bootstrap: [
       AppComponent
