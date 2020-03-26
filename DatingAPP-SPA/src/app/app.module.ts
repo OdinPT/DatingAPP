@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from 'src/_services/error.interceptor';
 import { AlertifyService } from 'src/_services/alertify.service';
 
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
@@ -53,8 +54,8 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    NgxGalleryModule,
     HttpClientModule,
-    
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
