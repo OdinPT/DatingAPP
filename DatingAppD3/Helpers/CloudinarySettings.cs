@@ -9,7 +9,7 @@ namespace DatingappD3.API.Helpers
     {
         public String CloudName { get; set; }
         public String ApiKey { get; set; }
-        public String ApiString { get; set; }
+        public String ApiSecret { get; set; }
 
     }
 }

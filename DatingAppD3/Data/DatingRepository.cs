@@ -25,9 +25,15 @@ namespace DatingappD3.API.Data
             _context.Remove(entity);
         }
 
-        public Task<User> GetUser(int id)
+        public async Task<Photo> GetPhoto(int id)
         {
-            var user = _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var photo = await _context.Photo.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
+        }
+
+        public async Task<User> GetUser(int id)
+        {
+            var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 
