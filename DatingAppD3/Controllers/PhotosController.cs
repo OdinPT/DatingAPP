@@ -6,7 +6,6 @@ using DatingappD3.API.Dtos;
 using DatingappD3.API.Helpers;
 using DatingappD3.API.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
@@ -16,13 +15,14 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using static System.Net.WebRequestMethods;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DatingappD3.API.Controllers
 {
     [Authorize]
-    [Route("api/users({userId}/photos")]
+    [Route("api/users/{userId}/photos")]
     [ApiController]
-    public class PhotosController :ControllerBase
+    public class PhotosController : ControllerBase
     {
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
@@ -48,7 +48,7 @@ namespace DatingappD3.API.Controllers
         [HttpGet("{id}", Name = "GetPhoto")]
         public async Task<IActionResult> GetPhoto(int id)
         {
-            var photoFromRepo = _repo.GetPhoto(id);
+            var photoFromRepo = await _repo.GetPhoto(id);
             var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
 
             return Ok(photo);
@@ -56,7 +56,7 @@ namespace DatingappD3.API.Controllers
 
         [HttpPost]
         public async Task<IActionResult> AddPhotoForUser(int userId,
-            PhotoForCreationDto photoForCreationDto) {
+            [FromForm]PhotoForCreationDto photoForCreationDto) {
 
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
