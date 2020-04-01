@@ -19,7 +19,7 @@ export class MemberEditComponent implements OnInit {
       $event.returnValue = true;
      }
   }
-  user: User;
+    user: User;
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
     private userService: UserService, private authService: AuthService) { }
 
