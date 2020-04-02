@@ -23,7 +23,7 @@ export class AppNavComponent implements OnInit {
      this.alertify.success('Logged in sucessfully');
     }, error => {
       this.alertify.error(error);
-    }, () =>{
+    }, () => {
       this.router.navigate(['/members']);
     } );
   }
