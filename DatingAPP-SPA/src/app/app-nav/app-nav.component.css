@@ -10552,3 +10552,8 @@
   color: #88ea1d !important;
 }
  /*# sourceMappingURL=bootstrap-reboot.css.map */
+img {
+  max-height: 40px;
+  border: 2px solid white;
+  display: inline;
+}
