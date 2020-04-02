@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   jwtHelper = new JwtHelperService();
 
   constructor(private authService: AuthService){}
-  ngOnInit(){
+  ngOnInit() {
     const token = localStorage.getItem('token');
     const user: User = JSON.parse(localStorage.getItem('user'));
     if (token) {
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     }
     if (user) {
       this.authService.currentUSer = user;
+      this.authService.changeMemberPhoto(user.photoURL);
     }
   }
 }

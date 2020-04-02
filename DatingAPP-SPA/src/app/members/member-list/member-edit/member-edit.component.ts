@@ -20,14 +20,15 @@ export class MemberEditComponent implements OnInit {
      }
   }
     user: User;
-  constructor(private route: ActivatedRoute, private alertify: AlertifyService,
-    private userService: UserService, private authService: AuthService) { }
+    photoUrl: string;
+  constructor(private route: ActivatedRoute, private alertify: AlertifyService, 
+     private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
    this.route.data.subscribe(data => {
      this.user = data['user'];
    });
-
+   this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   updateUser(){
