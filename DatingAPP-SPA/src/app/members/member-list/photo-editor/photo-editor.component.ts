@@ -72,7 +72,7 @@ setMainPhoto(photo: Photo) {
   });
 }
 
-deletePhoto(id: number) { 
+deletePhoto(id: number) {
   this.alertify.confirm('Are you sure you want to delete this photo?', () => {
     this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(() => {
         this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
