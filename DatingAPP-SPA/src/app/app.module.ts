@@ -22,7 +22,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from 'src/_services/user.service';
 import { MemberCardComponent } from './members/member-list/member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
 import { Component, ViewChild } from '@angular/core';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
@@ -55,6 +55,7 @@ export function tokenGetter() {
    ],
    imports: [
    TimeagoModule.forRoot(),
+   PaginationModule.forRoot(),
    BrowserModule,
 	AppRoutingModule,
 	HttpClientModule,
