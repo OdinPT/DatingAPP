@@ -1,4 +1,5 @@
-﻿using DatingappD3.API.Models;
+﻿using DatingappD3.API.Helpers;
+using DatingappD3.API.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -48,10 +49,11 @@ namespace DatingappD3.API.Data
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
-            return users;
+            var users = _context.Users.Include(p => p.Photos);
+             
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
