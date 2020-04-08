@@ -34,6 +34,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changed.guard';
 import { PhotoEditorComponent } from './members/member-list/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeagoModule } from 'ngx-timeago';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -67,7 +68,7 @@ export function tokenGetter() {
    RouterModule.forRoot(appRoutes),
    NgxGalleryModule,
    FileUploadModule,
-
+   ButtonsModule.forRoot(),
    HttpClientModule,
    JwtModule.forRoot({
      config: {

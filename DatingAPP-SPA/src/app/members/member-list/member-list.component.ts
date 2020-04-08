@@ -4,6 +4,7 @@ import { UserService } from 'src/_services/user.service';
 import { AlertifyService } from 'src/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
+import { NgxGalleryThumbnailsComponent } from '@kolkov/ngx-gallery';
 
 @Component({
   selector: 'app-member-list',
@@ -29,6 +30,7 @@ export class MemberListComponent implements OnInit {
     this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
+    this.userParams.orderBy = 'lastActive';
   }
 
   pageChanged(event: any): void {
