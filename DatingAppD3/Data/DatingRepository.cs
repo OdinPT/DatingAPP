@@ -44,15 +44,20 @@ namespace DatingappD3.API.Data
             return user;
         }
 
-        public Task<User> GetUser()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = _context.Users.Include(p => p.Photos);
-             
+            var users = _context.Users.Include(p => p.Photos).AsQueryable(); 
+
+            users = users.Where(u => u.Id != userParams.UserId);
+            users = users.Where(u => u.Gender == userParams.Gender);
+            
+            if (userParams.MinAge != 18 || userParams.MaxAge != 99)
+            {
+                var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+                var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
+
+                users = users.Where(u => u.DateofBirth >= minDob && u.DateofBirth <= maxDob);
+            }
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
